@@ -15,14 +15,12 @@ def solution(numbers):
     answer = 0
 
     numbers = list(map(str,numbers))
-    # print(numbers)
 
     b =[]
     for j in range(1,len(numbers)+1) :
       for i in list(permutations(numbers, j)): #4P2
           b.append(int(''.join(i)))
     b = list(set(b))
-    print(b)
 
     for x in b :
       if primeCheck(x) == True :
