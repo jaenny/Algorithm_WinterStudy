@@ -4,7 +4,7 @@ def solution(phone_book):
     nums = dict()
     phone_book = sorted(phone_book, key = lambda x : len(x))
 
-    print(phone_book)
+    
 
     
     return answer
