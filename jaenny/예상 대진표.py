@@ -1,6 +1,4 @@
-import math
 def solution(n,a,b):
-
     answer = 0
     while True :
       if a == b : return answer
