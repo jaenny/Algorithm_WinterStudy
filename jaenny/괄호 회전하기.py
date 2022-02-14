@@ -2,7 +2,10 @@ def solution(s):
     answer = 0
 
     for i in range(len(s)) :
+      # 괄호 회전
       temp = s[i:len(s)]+s[0:i]
+
+      # 짝이 맞는 괄호 문자열인지 확인
       if check(temp) :
         answer += 1
       
