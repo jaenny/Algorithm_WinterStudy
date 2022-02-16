@@ -1,6 +1,5 @@
-import math
 def solution(clothes):
-    answer = 0
+    answer = 1
 
     # 해시 만들기
     closet = dict()
@@ -10,6 +9,11 @@ def solution(clothes):
         closet[cloth[1]] = [cloth[0]]
       else :
         closet[cloth[1]].append(cloth[0])
+    
+    for key in closet.keys() :
+      answer *= (len(closet[key])+1)
+    
+    return answer -1
 
     
 

@@ -1,4 +1,3 @@
-from itertools import combinations
 def solution(number, k):
   result = ''
   final = len(number) - k
