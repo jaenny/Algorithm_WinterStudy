@@ -12,24 +12,27 @@ def solution(n):
       before = num
       i += 1
       cnt -= 1
+  # n = 4 일 경우
+  # nums = [[1,2,3,4], [5,6,7], [8,9], [10]] -> 방향이 같은 수들끼리 한 배열로 묶임
 
   dr = [0,1,2] # 아래쪽, 오른쪽, 왼쪽위
   y = x = 0 # matrix에서 사용할 좌표
 
   for i in range(len(nums)) :
-    d = dr[i%3]
-    if d == 0 :
+    d = dr[i%3] # 방향 정하기
+
+    if d == 0 : # 아래쪽
       for j in range(len(nums[i])) :
         matrix[y][x] = nums[i][j]
         y += 1
-        if j == len(nums[i])-1 : 
+        if j == len(nums[i])-1 : # 마지막에 닿으면 오른쪽 방향으로 좌표 준비
           y -= 1
           x += 1
-    elif d == 1 :
+    elif d == 1 : # 오른쪽
       for j in range(len(nums[i])) :
         matrix[y][x] = nums[i][j]
         x += 1
-        if j == len(nums[i])-1 : 
+        if j == len(nums[i])-1 : # 마지막에 닿으면 왼쪽위 방향으로 좌표 준비
           y -= 1
           x -= 2
     else :
@@ -37,7 +40,7 @@ def solution(n):
         matrix[y][x] = nums[i][j]
         y -= 1
         x -= 1
-        if j == len(nums[i])-1 : 
+        if j == len(nums[i])-1 : # 마지막에 닿으면 아래쪽 방향으로 좌표 준비
           y += 2
           x += 1
     
