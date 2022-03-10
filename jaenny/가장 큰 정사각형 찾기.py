@@ -1,22 +1,20 @@
 def solution(board):
   answer = 0
 
-  width = min(len(board), len(board[0])) # 정사각형 가로
+  height = len(board)
+  width = len(board[0]) 
 
-  def check(i,j) :
-    for y in range(i, i+w) :
-      for x in range(j, j+w) :
-        if board[y][x] == 0 :
-          return False
-    return True
+  dp = [[0]*width for _ in range(height)]
 
-  for w in range(width, 0, -1 ) :
-    for i in range(len(board)-w+1) :
-      for j in range(len(board[0])-w+1) :
-        if check(i,j) :
-          return w*w
+  
 
-  return answer
+  for i in range(height) :
+    for j in range(width) :
+      if board[i][j] == 1 :
+        dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])+1
+        answer = max(dp[i][j], answer)
+
+  return answer**2
 
 print(solution([[0,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,1,0]]))
 print(solution([[0,0,1,1],[1,1,1,1]]))
