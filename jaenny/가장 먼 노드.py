@@ -1,11 +1,10 @@
 from collections import deque
 def solution(n, edge):
-  answer = 0
+  visit = [-1]*(n+1) # 방문하지 않은 노드의 초기값을 -1로 설정
+  visit[1] = 0 # 1번 노드는 0번만에 방문 가능
 
-  visit = [-1]*(n+1)
-  visit[1] = 0
+  vertex = dict() # 간선으로 이어진 노드 정보를 사전에 저장
 
-  vertex = dict()
   for eg in edge :
     a,b = eg
     if a in vertex : vertex[a].append(b)
@@ -20,9 +19,9 @@ def solution(n, edge):
     while queue :
       node = queue.popleft()
       cnt = visit[node]
-      for n in vertex[node] :
-        if visit[n] == -1 :
-          visit[n] = cnt + 1
+      for n in vertex[node] : # 현재 노드에서 간선으로 이어진 노드 중
+        if visit[n] == -1 : # 아직 방문하지 않은 노드가 있다면
+          visit[n] = cnt + 1 # 현재 노드까지의 간선 길이 + 1
           queue.append(n)
   
   bfs(queue)
